@@ -2,10 +2,10 @@ const invoices = require('./invoices.json');
 const plays = require('./plays.json');
 
 function statement(invoice, plays) {
+    // 출력할 문장을 생성하는 일만 함
     let result = `청구 내역 (고객명: ${invoice.customer})\n`;
 
     for (let perf of invoice.performances) {
-        // 청구 내역을 출력한다.
         result += `    ${playFor(perf).name}: ${usd(amountFor(perf))} (${perf.audience}석)\n`;
     }
 
@@ -13,6 +13,7 @@ function statement(invoice, plays) {
     result += `적립 포인트: ${totalVolumeCredits()}점\n`;
     return result;
 
+    // 중첩 함수 시작(계산 로직을 여러 개의 보조 함수로 추출)
     function totalAmount() {
         let result = 0;
         for (let perf of invoice.performances) {
