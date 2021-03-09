@@ -12,7 +12,12 @@ function statement(invoice, plays) {
 
     function enrichPerformance(aPerformance) {
         const result = Object.assign({}, aPerformance);
+        result.play = playFor(aPerformance);
         return result;
+    }
+
+    function playFor(aPerformance) {
+        return plays[aPerformance.playID];
     }
 }
 
@@ -20,7 +25,7 @@ function renderPlainText(data, plays) {
     let result = `청구 내역 (고객명: ${data.customer})\n`;
 
     for (let perf of data.performances) {
-        result += `    ${playFor(perf).name}: ${usd(amountFor(perf))} (${perf.audience}석)\n`;
+        result += `    ${perf.play.name}: ${usd(amountFor(perf))} (${perf.audience}석)\n`;
     }
 
     result += `총액: ${usd(totalAmount())}\n`;
@@ -57,20 +62,16 @@ function renderPlainText(data, plays) {
         let volumeCredits = 0;
         volumeCredits += Math.max(aPerformance.audience - 30, 0);
 
-        if ('comedy' === playFor(aPerformance).type)
+        if ('comedy' === aPerformance.play.type)
             volumeCredits += Math.floor(aPerformance.audience / 5);
 
         return volumeCredits;
     }
 
-    function playFor(aPerformance) {
-        return plays[aPerformance.playID];
-    }
-
     function amountFor(aPerformance) {
         let result = 0;
 
-        switch (playFor(aPerformance).type) {
+        switch (aPerformance.play.type) {
             case 'tragedy': // 비극
                 result = 40000;
                 if (aPerformance.audience > 30) {
