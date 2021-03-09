@@ -2,7 +2,10 @@ const invoices = require('./invoices.json');
 const plays = require('./plays.json');
 
 function statement(invoice, plays) {
-    // 출력할 문장을 생성하는 일만 함
+    return renderPlainText(invoice, plays);
+}
+
+function renderPlainText(invoice, plays) {
     let result = `청구 내역 (고객명: ${invoice.customer})\n`;
 
     for (let perf of invoice.performances) {
