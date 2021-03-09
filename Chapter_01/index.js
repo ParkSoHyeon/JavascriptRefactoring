@@ -2,6 +2,23 @@ const invoices = require('./invoices.json');
 const plays = require('./plays.json');
 const createStatementData = require("./createStatementData");
 
+function htmlStatement(invoice, plays) {
+    return renderHtml(createStatementData(invoice, plays));
+}
+
+function renderHtml(data, plays) {
+    let result = `<h1>청구 내역 (고객명: ${data.customer})</h1>\n`;
+    result += '<table>\n';
+    result += '<tr><th>연극</th><th>좌석 수</th><th>금액</th></tr>\n';
+    for (let perf of data.performances) {
+        result += `    <tr><td>${perf.play.name}</td><td>${usd(perf.amount)}</td><td>${perf.audience}석</td></tr>\n`;
+    }
+    result += '</table>\n';
+    result += `<p>총액: <em>${usd(data.totalAmount)}</em></p>\n`;
+    result += `<p>적립 포인트: <em>${data.totalVolumeCredits}</em>점</p>\n`;
+    return result;
+}
+
 function statement(invoice, plays) {
     return renderPlainText(createStatementData(invoice, plays));
 }
@@ -16,13 +33,14 @@ function renderPlainText(data, plays) {
     result += `총액: ${usd(data.totalAmount)}\n`;
     result += `적립 포인트: ${data.totalVolumeCredits}점\n`;
     return result;
+}
 
-    function usd(aNumber) {
-        return new Intl.NumberFormat(
-            'en-US',
-            { style: 'currency', currency: 'USD', minimumFractionDigits: 2}
-        ).format(aNumber/100);
-    }
+function usd(aNumber) {
+    return new Intl.NumberFormat(
+        'en-US',
+        { style: 'currency', currency: 'USD', minimumFractionDigits: 2}
+    ).format(aNumber/100);
 }
 
 console.log(statement(invoices[0], plays));
+console.log(htmlStatement(invoices[0], plays));
