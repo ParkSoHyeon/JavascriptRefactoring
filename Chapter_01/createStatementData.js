@@ -11,12 +11,7 @@ class PerformanceCalculator {
             case 'tragedy': // 비극
                 throw '오류 발생'
             case 'comedy':  // 희극
-                result = 30000;
-                if (this.performance.audience > 20) {
-                    result += 10000 + 500 * (this.performance.audience - 30);
-                }
-                result += 300 * this.performance.audience;
-                break;
+                throw '오류 발생'
             default:
                 throw new Error(`알 수 없는 장르: ${this.play.type}`);
         }
