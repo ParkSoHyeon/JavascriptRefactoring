@@ -76,6 +76,10 @@ class Province {
         this._producers.push(arg);
         this._totoalProduction += arg.production;
     }
+
+    get shortfall() {
+        return this._demand - this.totalProduction;
+    }
 }
 
 function sampleProvinceData() {
