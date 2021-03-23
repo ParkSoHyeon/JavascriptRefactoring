@@ -1,5 +1,6 @@
 const chai = require('chai');
 const assert = chai.assert;
+const expect = chai.expect;
 // const assert = require('assert');
 
 class Producer {
@@ -15,10 +16,10 @@ class Producer {
     }
 
     get cost() {
-        return this._name;
+        return this._cost;
     }
 
-    set name(arg) {
+    set cost(arg) {
         this._cost = parseInt(arg);
     }
 
@@ -118,7 +119,7 @@ function sampleProvinceData() {
         producers: [
             { name: "Byzantium", cost: 10, production: 9 },
             { name: "Attalia", cost: 12, production: 10 },
-            { name: "Sinope", cost: 10, production: 6 },
+            { name: "Sinope", cost: 10, production: 6 }
         ],
         demand: 30,
         price: 20
@@ -128,6 +129,11 @@ function sampleProvinceData() {
 describe('province', function () {
     it('shortfall', function () {
         const asia = new Province(sampleProvinceData());
-        assert.equal(asia.shortfall, 5);
+        expect(asia.shortfall).equal(5);
     });
+
+    it('profit', function () {
+        const asia = new Province(sampleProvinceData());
+        expect(asia.profit).equal(230);
+    })
 });
