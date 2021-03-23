@@ -42,7 +42,8 @@ class Province {
         this._totoalProduction = 0;
         this._demand = doc.demand;
         this._price = doc.price;
-        doc.producers.forEach(d => this.addProducer(new Producer(this, d)));
+
+        Array.isArray(doc.producers) && doc.producers.forEach(d => this.addProducer(new Producer(this, d)));
     }
 
     get name() {
@@ -184,5 +185,19 @@ describe('no producers', function () {
 
     it('profit', function () {
         expect(noProducers.profit).equal(0);
+    });
+});
+
+describe('string for producers', function () {
+    it('', function () {
+        const data = {
+            name: 'String producers',
+            producers: "",
+            demand: 30,
+            price: 20
+        };
+
+        const prov = new Province(data);
+        expect(prov.shortfall).equal(30);
     });
 });
