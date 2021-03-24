@@ -7,4 +7,4 @@ function xxNEWinNewEngland(stateCode) {
 }
 
 
-const newEnglanders = someCustomers.filter(c => inNewEngland(c));
+const newEnglanders = someCustomers.filter(c => xxNEWinNewEngland(c.address.state));
