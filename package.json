@@ -4,6 +4,6 @@
     "mocha": "^8.3.2"
   },
   "scripts": {
-    "test": "mocha ./Chapter_04/index.js"
+    "test": "mocha ./Chapter_06/index_6.js"
   }
 }

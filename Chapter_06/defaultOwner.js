@@ -8,4 +8,4 @@ function setDefaultOwner(arg) {
     defaultOwnerData = arg;
 }
 
-export { defaultOwner, setDefaultOwner };
+module.exports = { defaultOwner, setDefaultOwner };
