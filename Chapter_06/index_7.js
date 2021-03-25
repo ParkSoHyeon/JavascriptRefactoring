@@ -1,11 +1,1 @@
-let _title = 'untitled';
-setTitle(obj['articleTitle']);
-result += `<h1>${title()}</h1>`;
-
-function title() {
-    return _title;
-}
-
-function setTitle(arg) {
-    _title = arg;
-}
+const cpyNm = '애크미 구스베리';
