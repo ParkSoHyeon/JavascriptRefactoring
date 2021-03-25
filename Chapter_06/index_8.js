@@ -10,7 +10,7 @@ const station = {
 }
 
 function readingsOutsideRange(station, range) {
-    return station.readings.filter(r => r.temp < range.min || r.temp > range.max);
+    return station.readings.filter(r => !range.contains(r.temp));
 }
 
 const range = new NumberRange(
@@ -31,6 +31,10 @@ class NumberRange {
 
     get max() {
         return this._data.max;
+    }
+
+    contains(arg) {
+        return (arg >= this.min && arg <= this.max);
     }
 
     // 값 객체로 만들 가능성이 높기 때문에 세터 x
