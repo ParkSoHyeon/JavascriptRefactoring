@@ -8,7 +8,11 @@ const baseCharge = aReading.baseCharge;
 // 클라이언트 2
 const rawReading = acquireReading();
 const aReading = new Reading(rawReading);
-const taxableCharge = Math.max(0, aReading.baseCharge - taxThreshold(aReading.year));
+const taxableCharge = taxableChargeFn(aReading);
+
+function taxableChargeFn(aReading) {
+    return Math.max(0, aReading.baseCharge - taxThreshold(aReading.year));
+}
 
 // 클라이언트 3
 const rawReading = acquireReading();
