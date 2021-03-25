@@ -9,9 +9,9 @@ const aReading = enrichReading(rawReading);
 const baseCharge = aReading.baseCharge;
 
 // 클라이언트 2
-const aReading = acquireReading();
-const base = (baseRate(aReading.month, aReading.year) * aReading.quantity);
-const taxableCharge = Math.max(0, base - taxThreshold(aReading.year));
+const rawReading = acquireReading();
+const aReading = enrichReading(rawReading);
+const taxableCharge = Math.max(0, aReading.baseCharge - taxThreshold(aReading.year));
 
 // 클라이언트 3
 const rawReading = acquireReading();
