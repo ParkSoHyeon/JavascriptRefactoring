@@ -1,3 +1,11 @@
 let tpHd = 'untitled';
-tpHd = obj['articleTitle'];
-result += `<h1>${tpHd}</h1>`;
+setTitle(obj['articleTitle']);
+result += `<h1>${title()}</h1>`;
+
+function title() {
+    return tpHd;
+}
+
+function setTitle(arg) {
+    tpHd = arg;
+}
