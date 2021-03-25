@@ -18,3 +18,19 @@ alerts = readingsOutsideRange(
     operatingPlan.temperatureFloor,
     operatingPlan.temperatureCeiling
 );
+
+class NumberRange {
+    constructor(min, max) {
+        this._data = {min, max};
+    }
+
+    get min() {
+        return this._data.min;
+    }
+
+    get max() {
+        return this._data.max;
+    }
+
+    // 값 객체로 만들 가능성이 높기 때문에 세터 x
+}
