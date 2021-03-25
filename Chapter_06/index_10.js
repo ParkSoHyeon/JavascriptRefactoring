@@ -11,7 +11,7 @@ const baseCharge = aReading.baseCharge;
 // 클라이언트 2
 const rawReading = acquireReading();
 const aReading = enrichReading(rawReading);
-const taxableCharge = Math.max(0, aReading.baseCharge - taxThreshold(aReading.year));
+const taxableCharge = aReading.taxableCharge;
 
 // 클라이언트 3
 const rawReading = acquireReading();
@@ -25,6 +25,7 @@ function calculateBaseCharge(aReading) {
 function enrichReading(original) {
     const result = _.cloneDeep(original);
     result.baseCharge = calculateBaseCharge(result);
+    result.taxableCharge = Math.max(0, result.baseCharge - taxThreshold(result.year))
     return result;
 }
 
