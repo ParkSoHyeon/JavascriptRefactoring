@@ -10,14 +10,23 @@ function getOrganization() {
 
 class Organization {
     constructor(data) {
-        this._data = data;
+        this._name = data.name;
+        this._country = data.country;
     }
 
     set name(arg) {
-        this._data.name = arg;
+        this._name = arg;
     }
 
     get name() {
-        return this._data.name;
+        return this._name;
+    }
+
+    set country(arg) {
+        this._country = arg;
+    }
+
+    get country() {
+        return this._country;
     }
 }
