@@ -4,10 +4,6 @@ newName = '구스베리'
 result += `<h1>${getOrganization().name}</h1>`;
 getOrganization().name = newName;
 
-function getRawDataOfOrganization() {
-    return organization._data;
-}
-
 function getOrganization() {
     return organization;
 }
