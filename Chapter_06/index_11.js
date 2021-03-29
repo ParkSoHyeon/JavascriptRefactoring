@@ -1,8 +1,7 @@
 function priceOrder(product, quantity, shippingMethod) {
     const priceData = calculatePricingData(product, quantity);
-    const price = applyShipping(priceData, shippingMethod);
 
-    return price;
+    return applyShipping(priceData, shippingMethod);
 }
 
 function calculatePricingData(product, quantity) {
@@ -17,7 +16,6 @@ function applyShipping(priceData, shippingMethod) {
     const shippingPerCase = (priceData.basePrice > shippingMethod.discountThreshold)
         ? shippingMethod.discountFee : shippingMethod.feePerCase;
     const shippingCost = priceData.quantity * shippingPerCase;
-    const price = priceData.basePrice - priceData.discount + shippingCost;
 
-    return price;
+    return priceData.basePrice - priceData.discount + shippingCost;
 }
