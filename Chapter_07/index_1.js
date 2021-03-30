@@ -1,4 +1,4 @@
-const customerData = {
+let customerData = {
     1929: {
         name: '마틴 파울러',
         id: 1920,
@@ -31,15 +31,23 @@ const customerData = {
 }
 
 // 쓰기 예
-customerData[customerID].usages[year][month] = amout;
+getRawDataOfCustomers()[customerID].usages[year][month] = amout;
 
 // 읽기 예
 function compareUsage(customerID, laterYear, month) {
-    const later = customerData[customerID].usages[laterYear][month];
-    const earlier = customerData[customerID].usages[laterYear - 1][month];
+    const later = getRawDataOfCustomers()[customerID].usages[laterYear][month];
+    const earlier = getRawDataOfCustomers()[customerID].usages[laterYear - 1][month];
 
     return {
         lastAmount: later,
         change: later - earlier
     };
+}
+
+function getRawDataOfCustomers() {
+    return customerData;
+}
+
+function setRawDataOfCustomers(arg) {
+    customerData = arg;
 }
