@@ -1,3 +1,9 @@
+class CustomerData {
+    constructor(data) {
+        this._data = data;
+    }
+}
+
 let customerData = {
     1929: {
         name: '마틴 파울러',
