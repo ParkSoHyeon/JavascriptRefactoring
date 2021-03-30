@@ -1,32 +1,45 @@
-const organization = new Organization({name: '애크미 구스베리', country: 'GB'});
+const customerData = {
+    1929: {
+        name: '마틴 파울러',
+        id: 1920,
+        usages: {
+            '2016': {
+                '1': 50,
+                '2': 55,
+            },
+            '2015': {
+                '1': 70,
+                '2': 63,
+            }
+        }
+    },
+    38673: {
+        name: '닐 포드',
+        id: 38673,
 
-newName = '구스베리'
-result += `<h1>${getOrganization().name}</h1>`;
-getOrganization().name = newName;
-
-function getOrganization() {
-    return organization;
+        usages: {
+            '2016': {
+                '1': 42,
+                '2': 63,
+            },
+            '2015': {
+                '1': 50,
+                '2': 63,
+            }
+        }
+    }
 }
 
-class Organization {
-    constructor(data) {
-        this._name = data.name;
-        this._country = data.country;
-    }
+// 쓰기 예
+customerData[customerID].usages[year][month] = amout;
 
-    set name(arg) {
-        this._name = arg;
-    }
+// 읽기 예
+function compareUsage(customerID, laterYear, month) {
+    const later = customerData[customerID].usages[laterYear][month];
+    const earlier = customerData[customerID].usages[laterYear - 1][month];
 
-    get name() {
-        return this._name;
-    }
-
-    set country(arg) {
-        this._country = arg;
-    }
-
-    get country() {
-        return this._country;
-    }
+    return {
+        lastAmount: later,
+        change: later - earlier
+    };
 }
