@@ -12,6 +12,10 @@ class CustomerData {
     usage(customerID, year, month) {
         return this._data[customerID].usages[year][month];
     }
+
+    get rawData() {
+        return _.cloneDeep(this._data);
+    }
 }
 
 let customerData = {
@@ -51,8 +55,8 @@ getCustomerData().setUsage(customerID, year, month, amount);
 
 // 읽기 예
 function compareUsage(customerID, laterYear, month) {
-    const later = getCustomerData().usage(customerID, laterYear, month);
-    const earlier = getCustomerData().usage(customerID, laterYear - 1, month);
+    const later = getCustomerData().rawData[customerID].usages[laterYear][month];
+    const earlier = getCustomerData().rawData[customerID].usages[laterYear - 1][month];
 
     return {
         lastAmount: later,
