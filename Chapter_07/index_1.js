@@ -50,10 +50,14 @@ function compareUsage(customerID, laterYear, month) {
     };
 }
 
-function getRawDataOfCustomers() {
+function getCustomerData() {
     return customerData;
 }
 
+function getRawDataOfCustomers() {
+    return customerData._data;
+}
+
 function setRawDataOfCustomers(arg) {
-    customerData = arg;
+    customerData = new CustomerData(arg);
 }
