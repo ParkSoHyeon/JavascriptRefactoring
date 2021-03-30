@@ -37,7 +37,11 @@ let customerData = {
 }
 
 // 쓰기 예
-getRawDataOfCustomers()[customerID].usages[year][month] = amout;
+setUsage(customerID, year, month, amount);
+function setUsage(customerID, year, month, amount) {
+    getRawDataOfCustomers()[customerID].usages[year][month] = amount;
+}
+
 
 // 읽기 예
 function compareUsage(customerID, laterYear, month) {
