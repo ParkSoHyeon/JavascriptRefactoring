@@ -1,6 +1,16 @@
+const _ = require('lodash');
+
 class CustomerData {
     constructor(data) {
         this._data = data;
+    }
+
+    setUsage(customerID, year, month, amount) {
+        this._data[customerID].usages[year][month] = amount;
+    }
+
+    usage(customerID, year, month) {
+        return this._data[customerID].usages[year][month];
     }
 }
 
@@ -37,16 +47,12 @@ let customerData = {
 }
 
 // 쓰기 예
-setUsage(customerID, year, month, amount);
-function setUsage(customerID, year, month, amount) {
-    getRawDataOfCustomers()[customerID].usages[year][month] = amount;
-}
-
+getCustomerData().setUsage(customerID, year, month, amount);
 
 // 읽기 예
 function compareUsage(customerID, laterYear, month) {
-    const later = getRawDataOfCustomers()[customerID].usages[laterYear][month];
-    const earlier = getRawDataOfCustomers()[customerID].usages[laterYear - 1][month];
+    const later = getCustomerData().usage(customerID, laterYear, month);
+    const earlier = getCustomerData().usage(customerID, laterYear - 1, month);
 
     return {
         lastAmount: later,
@@ -56,12 +62,4 @@ function compareUsage(customerID, laterYear, month) {
 
 function getCustomerData() {
     return customerData;
-}
-
-function getRawDataOfCustomers() {
-    return customerData._data;
-}
-
-function setRawDataOfCustomers(arg) {
-    customerData = new CustomerData(arg);
 }
