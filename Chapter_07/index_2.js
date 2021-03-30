@@ -8,12 +8,15 @@ class Person {
         return this._name;
     }
 
+    // 복제본 제공
     get courses() {
-        return this._courses;
+        return this._courses.slice();
     }
 
+    // 1. 세터 제거하기
+    // 2. 복제본을 필드에 저장
     set courses(arg) {
-        this._courses = arg;
+        this._courses = arg.slice();
     }
 
     addCourse(aCourse) {
@@ -53,9 +56,9 @@ numAdvancedCourses = aPerson.courses.filter(c => c.isAdvanced).length;
 
 // 클라이언트1
 const basicCourseNames = readBasicCourseNames(filename);
-aPerson.courses = basicCourseNames.map(name => new Course(name, false));
+aPerson.addCourse(basicCourseNames.map(name => new Course(name, false)));
 
 // 클라이언트2
 for (const name of readBasicCourseNames(filename)) {
-    aPerson.courses.push(new Course(name, false));
+    aPerson.addCourse(new Course(name, false));
 }
