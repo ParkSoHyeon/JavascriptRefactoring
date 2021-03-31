@@ -3,12 +3,12 @@ class Order {
         this._priority = data.priority;
     }
 
-    get priority() {
-        return this._priority;
+    get priorityString() {
+        return this._priority.toString();
     }
 
     set priority(arg) {
-        return this._priority = arg;
+        return this._priority = new Priority(arg);
     }
 }
 
@@ -23,4 +23,4 @@ class Priority {
 }
 
 // 클라이언트
-highPriorityCount = orders.filter(o => 'high' === o.priority || 'rush' === o.priority).length;
+highPriorityCount = orders.filter(o => 'high' === o.priorityString || 'rush' === o.priorityString).length;
