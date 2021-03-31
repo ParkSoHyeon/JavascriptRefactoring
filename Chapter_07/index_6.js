@@ -32,8 +32,12 @@ class Shipment {
     set trackingInformation(arg) {
         this._trackingInformation = arg;
     }
+
+    set shippingCompany(arg) {
+        this._trackingInformation.shippingCompany = arg;
+    }
 }
 
 // 클라이언트
 const aShipment = new Shipment();
-aShipment.trackingInformation.shippingCompany = request.vendor;
+aShipment.shippingCompany = request.vendor;
