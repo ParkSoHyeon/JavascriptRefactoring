@@ -1,4 +1,16 @@
-class TrackingInformation {
+class Shipment {
+    get trackingInfo() {
+        return this._trackingInformation.display;
+    }
+
+    get trackingInformation() {
+        return this._trackingInformation;
+    }
+
+    set trackingInformation(arg) {
+        this._trackingInformation = arg;
+    }
+
     get shippingCompany() {
         return this._shippingCompany;
     }
@@ -17,24 +29,6 @@ class TrackingInformation {
 
     get display() {
         return `${this.shippingCompany}: ${this.trackingNumber}`;
-    }
-}
-
-class Shipment {
-    get trackingInfo() {
-        return this._trackingInformation.display;
-    }
-
-    get trackingInformation() {
-        return this._trackingInformation;
-    }
-
-    set trackingInformation(arg) {
-        this._trackingInformation = arg;
-    }
-
-    set shippingCompany(arg) {
-        this._trackingInformation.shippingCompany = arg;
     }
 }
 
