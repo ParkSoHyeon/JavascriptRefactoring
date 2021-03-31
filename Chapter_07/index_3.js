@@ -12,5 +12,15 @@ class Order {
     }
 }
 
+class Priority {
+    constructor(value) {
+        this._value = value;
+    }
+
+    toString() {
+        return this._value;
+    }
+}
+
 // 클라이언트
 highPriorityCount = orders.filter(o => 'high' === o.priority || 'rush' === o.priority).length;
