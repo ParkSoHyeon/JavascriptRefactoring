@@ -7,8 +7,8 @@ class Person {
         return this._name;
     }
 
-    get manager() {
-        return this._department.manager;
+    get department() {
+        return this._department;
     }
 }
 
@@ -32,4 +32,4 @@ class Department {
 
 // 클라이언트
 const aPerson = new Person('Deny');
-manager = aPerson.manager;
+manager = aPerson.department.manager;
