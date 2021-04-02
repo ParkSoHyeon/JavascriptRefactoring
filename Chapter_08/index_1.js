@@ -1,6 +1,6 @@
 function trackSummary(points) {
     const totalTime = calculateTime();
-    const totalDistance = top_calculateDistance();
+    const totalDistance = top_calculateDistance(points);
     const pace = totalTime / 60 / totalDistance;
     
     return {
