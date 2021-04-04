@@ -1,8 +1,8 @@
 class Customer {
     constructor(name, discountRate) {
         this._name = name;
-        this._setDiscountRate(discountRate);
         this._contract = new CustomerContract(new Date().now);
+        this._setDiscountRate(discountRate);
     }
 
     get discountRate() {
