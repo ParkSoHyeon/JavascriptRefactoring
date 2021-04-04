@@ -6,11 +6,11 @@ class Customer {
     }
 
     get discountRate() {
-        return this._discountRate
+        return this._contract._discountRate
     }
 
     _setDiscountRate(arg) {
-        this._discountRate = arg;
+        this._contract._discountRate = arg;
     }
 
     becomePreferred() {
