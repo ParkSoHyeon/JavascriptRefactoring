@@ -17,6 +17,14 @@ function emitPhotoData(aPhoto) {
 function photoDiv(p) {
     return [
         '<div>',
+        zznew(p),
+        '</div>'
+    ].join('\n');
+}
+
+function zznew(p) {
+    return [
+        '<div>',
         `<p>제목: ${p.title}</p>`,
         emitPhotoData(p),
         '</div>'
